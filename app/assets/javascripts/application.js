@@ -15,24 +15,6 @@
 //= require twitter/bootstrap
 //= require_tree .
 
-$(document).ready(function(){
-    $("#book_search").submit(function(){
-        if($("#book_info").val() == "")
-        {
-            alert("Search field cannot be empty ");
-            return false
-        }
-        else
-        {
-            return true
-        }
-    });
-})
-
-$(document).ajaxStart(function() {
-   $('#loading_overlay').show();
- });
-
 function show_book_detail(description){
     $(".span3").show();
     $("#about-book").html(description);

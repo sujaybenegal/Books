@@ -4,21 +4,24 @@
       .navbar-inner
     
         %a.btn.btn-navbar
-        %a.brand{:style => "margin-left: 0px;"} Book Store
+        %a.brand.heading Book Store
         .nav-collapse
           %ul.nav
-    = form_tag search_books_path, :method => :get, :remote => :true, :id => "book_search" do
-      %fieldset
-        %legend
-          Books
-        .control-group
-          .controls
-            = text_field :book, :info
-            = submit_tag "Search Books", :class => "btn"
-    #loading_overlay{:style => "position:absolute;left:11%;top:17%;width:24%;display:none;"}
-      = image_tag("ajax-loader.gif")
-    #books
-  .span3{:style => "margin-top: 185px;display:none"}
+    %table.table.table-striped
+      -if !@books.nil?
+        %tr
+          %th Book
+          %th Title
+          %th Authors
+
+          - @books.each do |book|
+            %tr{:onmouseover => "show_book_detail('#{book.description.nil? ? "No description Available" : book.description.gsub("'", "&rsquo;").truncate(500)}')"}
+              %td= image_tag book.image_link, :size => "25x25", :class => "thumbnail"
+              %td= book.title
+              %td= book.authors
+        #paginator
+          = paginate @books
+  .span3.right_section
     .well
       %h4 Description
       #about-book

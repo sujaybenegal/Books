@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.navbar .brand.heading
+{
+margin-left: 0px;
+}
