@@ -1,0 +1,24 @@
+.row
+  .span9
+    .navbar.navbar-fixed-top
+      .navbar-inner
+    
+        %a.btn.btn-navbar
+        %a.brand{:style => "margin-left: 0px;"} Book Store
+        .nav-collapse
+          %ul.nav
+    = form_tag search_books_path, :method => :get, :remote => :true, :id => "book_search" do
+      %fieldset
+        %legend
+          Books
+        .control-group
+          .controls
+            = text_field :book, :info
+            = submit_tag "Search Books", :class => "btn"
+    #loading_overlay{:style => "position:absolute;left:11%;top:17%;width:24%;display:none;"}
+      = image_tag("ajax-loader.gif")
+    #books
+  .span3{:style => "margin-top: 185px;display:none"}
+    .well
+      %h4 Description
+      #about-book

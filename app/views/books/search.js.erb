@@ -1,0 +1,3 @@
+$("#books").html("<%= escape_javascript(render(:partial => "book_list"))%>");
+$('#paginator').html('<%= escape_javascript(paginate(@books, :remote => true).to_s) %>');
+$('#loading_overlay').hide();
