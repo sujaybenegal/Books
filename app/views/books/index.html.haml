@@ -1,27 +1,21 @@
 .row
-  .span9
-    .navbar.navbar-fixed-top
-      .navbar-inner
-    
-        %a.btn.btn-navbar
-        %a.brand.heading Book Store
-        .nav-collapse
-          %ul.nav
-    %table.table.table-striped
-      -if !@books.nil?
-        %tr
-          %th Book
-          %th Title
-          %th Authors
-
-          - @books.each do |book|
-            %tr{:onmouseover => "show_book_detail('#{book.description.nil? ? "No description Available" : book.description.gsub("'", "&rsquo;").truncate(500)}')"}
-              %td= image_tag book.image_link, :size => "150x130", :class => "thumbnail"
-              %td= book.title
-              %td= book.authors
-        #paginator
-          = paginate @books
-  .span3.right_section
-    .well{:style => "position:fixed"}
-      %h4 Description
-      #about-book
+  .navbar.navbar-fixed-top
+    .navbar-inner
+  
+      %a.btn.btn-navbar
+      %a.brand.heading Book Store
+      .nav-collapse
+        %ul.nav
+  %table.table.table-striped
+    -if !@books.nil?
+      %tr
+        %th Book
+        %th Title
+        %th Authors
+        - @books.each do |book|
+          %tr{:onmouseover => "show_book_detail('#{book.description.nil? ? "No description Available" : book.description.gsub("'", "&rsquo;").truncate(500)}')"}
+            %td= image_tag book.image_link, :size => "140x150", :class => "thumbnail"
+            %td= book.title
+            %td= book.authors
+      #paginator
+        = paginate @books
